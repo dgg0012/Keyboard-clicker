@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Keyboard clicker (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Keyboard clicker (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

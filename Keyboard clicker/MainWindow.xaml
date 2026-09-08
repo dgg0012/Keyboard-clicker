@@ -14,6 +14,47 @@
     </Window.SystemBackdrop>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="400" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock Text="Keyboard clicker" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10,30,0,0">
+            <TextBlock Name="CurrencyText" Text="0 Keys" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Name="IncomePerSecondText" Text="0 Keys/s" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
+            <Button Name="Keyboard" Content="Click" Width="400" Height="200" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="0,30,10,0">
+            <TextBlock Text="Upgrades" FontSize="30" FontWeight="Bold"/>
+            <ListView Name="UpgradeList" Height="400" Width="300">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="DimGray" BorderThickness="2" Padding="10">
+                            <StackPanel>
+                                <Image/>
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding CurrentPrice}"/>
+                                <TextBlock Text="{Binding IncomeIncrease}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <TextBlock Text="Logs" FontSize="20" FontWeight="Bold"/>
+        </StackPanel>
     </Grid>
 </Window>

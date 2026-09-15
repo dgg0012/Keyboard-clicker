@@ -6,5 +6,14 @@ namespace Keyboard_clicker.Models
 {
     class SaveData
     {
+        public double Currency { get; set; }
+
+        public double ClickValue { get; set; }
+
+        public List<Upgrade> Upgrades { get; set; }
+
+        public List<Automation> Automations { get; set; }
+
+        public List<TimerState> Timers { get; set; }
     }
 }

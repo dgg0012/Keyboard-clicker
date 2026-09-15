@@ -6,5 +6,6 @@ namespace Keyboard_clicker.Services
 {
     class AutomationService
     {
+
     }
 }

@@ -13,8 +13,8 @@ namespace Keyboard_clicker.Models
         public double Price { get; set; }
         public int Quantity { get; set; }
 
-        public int Interval { get; set; }
-        public int Elapsed { get; set; }
+        public double Interval { get; set; }
+        public double Elapsed { get; set; }
 
         public string AutomationType { get; set; }
     }

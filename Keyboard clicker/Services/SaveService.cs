@@ -54,8 +54,16 @@ namespace Keyboard_clicker.Services
             try
             {
                 string jsonString = File.ReadAllText(savePath);
-                GameState? gameState = JsonSerializer.Deserialize<GameState>(jsonString);
-                return gameState ?? new GameState();
+                SaveData? saveData = JsonSerializer.Deserialize<SaveData>(jsonString);
+                GameState gameState = new GameState
+                {
+                    Currency = saveData.Currency,
+                    ClickValue = saveData.ClickValue,
+                    Upgrades = saveData.Upgrades,
+                    Automations = saveData.Automations,
+                    Timers = saveData.Timers,
+                };
+                return gameState;
             }
             catch(Exception ex)
             {

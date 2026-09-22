@@ -21,13 +21,31 @@ namespace Keyboard_clicker.Services
 
         public void ManualSave(GameState gameState)
         {
-            string jsonString = JsonSerializer.Serialize(gameState);
+            SaveData saveData = new SaveData
+            {
+                TimeStamp = DateTime.Now,
+                Currency = gameState.Currency,
+                ClickValue = gameState.ClickValue,
+                Upgrades = gameState.Upgrades,
+                Automations = gameState.Automations,
+                Timers = gameState.Timers,
+            };
+            string jsonString = JsonSerializer.Serialize(saveData);
             File.WriteAllText(_manualSavePath, jsonString);
         }
 
         public void AutoSave(GameState gameState)
         {
-            string jsonString = JsonSerializer.Serialize(gameState);
+            SaveData saveData = new SaveData
+            {
+                TimeStamp = DateTime.Now,
+                Currency = gameState.Currency,
+                ClickValue = gameState.ClickValue,
+                Upgrades = gameState.Upgrades,
+                Automations = gameState.Automations,
+                Timers = gameState.Timers,
+            };
+            string jsonString = JsonSerializer.Serialize(saveData);
             File.WriteAllText(_autoSavePath, jsonString);
         }
 

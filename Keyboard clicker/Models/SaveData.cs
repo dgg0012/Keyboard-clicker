@@ -6,6 +6,7 @@ namespace Keyboard_clicker.Models
 {
     class SaveData
     {
+        public DateTime TimeStamp { get; set; }
         public double Currency { get; set; }
 
         public double ClickValue { get; set; }

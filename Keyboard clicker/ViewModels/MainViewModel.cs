@@ -78,6 +78,13 @@ namespace Keyboard_clicker.ViewModels
             _saveService.ManualSave(_gameState);
         }
 
+        public void Update(double deltaTime)
+        {
+            _gameService.AddPassiveIncome(deltaTime);
+            _automationService.Update(deltaTime);
+
+            OnPropertyChanged(nameof(Currency));
+        }
         
 
     }

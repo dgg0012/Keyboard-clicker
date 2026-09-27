@@ -13,7 +13,7 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid>
+    <Grid DataContext="{Binding}" x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="400" />
@@ -30,14 +30,14 @@
         </StackPanel>
         
         <StackPanel Grid.Row="1" Grid.Column="0" Margin="10,70,0,0">
-            <TextBlock Name="CurrencyText" Text="0 Keys" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"/>
-            <TextBlock Name="IncomePerSecondText" Text="0 Keys/s" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
-            <Button Name="Keyboard" Content="Click" Width="400" Height="200" HorizontalAlignment="Center"/>
+            <TextBlock Name="CurrencyText" Text="{Binding Currency}" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"/>
+            <TextBlock Name="IncomePerSecondText" Text="{Binding IncomePerSecond}" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
+            <Button Name="Keyboard" Content="Click" Width="400" Height="200" HorizontalAlignment="Center" Click="Keyboard_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="0,30,10,0">
             <TextBlock Text="Upgrades" FontSize="30" FontWeight="Bold"/>
-            <ListView Name="UpgradeList" Height="400" Width="300">
+            <ListView Name="UpgradeList" ItemsSource="{Binding Upgrades}" Height="400" Width="300">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="DimGray" BorderThickness="2" Padding="10">

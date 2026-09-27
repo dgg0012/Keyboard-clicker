@@ -7,8 +7,8 @@ namespace Keyboard_clicker.Models
     class GameState
     {
         public double Currency { get; set; }
-        
-        public double ClickValue { get; set; }
+
+        public double ClickValue { get; set; } = 1;
         public double IncomePerSecond { get; set; }
 
         public List<Upgrade> Upgrades { get; set; }

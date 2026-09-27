@@ -45,5 +45,17 @@ namespace Keyboard_clicker
             CurrencyText.Text = $"{_MainViewModel.Currency} keys";
             IncomePerSecondText.Text = $"{_MainViewModel.IncomePerSecond} keys/s";
         }
+
+        private void UpgradesButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpgradesButton.Opacity = 1;
+            AutomationsButton.Opacity = 0;
+        }
+
+        private void AutomationsButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpgradesButton.Opacity = 0;
+            AutomationsButton.Opacity = 1;
+        }
     }
 }

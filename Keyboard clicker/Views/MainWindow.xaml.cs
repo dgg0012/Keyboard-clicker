@@ -27,7 +27,14 @@ namespace Keyboard_clicker
 
             SaveService saveService = new SaveService();
 
-            GameState gameState = new GameState();
+            GameDataService gameDataService = new GameDataService();
+            GameData gameData = gameDataService.Load();
+
+            GameState gameState = new GameState()
+            {
+                Upgrades = gameData.Upgrades,
+                Automations = gameData.Automations
+            };
 
             GameService gameService = new GameService(gameState);
             UpgradeService upgradeService = new UpgradeService(gameState);
@@ -36,6 +43,8 @@ namespace Keyboard_clicker
 
             _MainViewModel = new MainViewModel(
                 gameState, gameService, saveService, upgradeService, automationService, logService);
+
+            grid.DataContext = _MainViewModel;
         }
 
         private void Keyboard_Click(object sender, RoutedEventArgs e)
@@ -48,14 +57,31 @@ namespace Keyboard_clicker
 
         private void UpgradesButton_Click(object sender, RoutedEventArgs e)
         {
-            UpgradesButton.Opacity = 1;
-            AutomationsButton.Opacity = 0;
+            UpgradeList.Opacity = 1;
+            AutomationsList.Opacity = 0;
         }
 
         private void AutomationsButton_Click(object sender, RoutedEventArgs e)
         {
-            UpgradesButton.Opacity = 0;
-            AutomationsButton.Opacity = 1;
+            UpgradeList.Opacity = 0;
+            AutomationsList.Opacity = 1;
+        }
+
+        private void BuyUpgrade_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Upgrade upgrade = (Upgrade)button.DataContext;
+            System.Diagnostics.Debug.WriteLine(
+        $"Clicked: {upgrade.Name}");
+
+            _MainViewModel.BuyUpgrade(upgrade);
+        }
+
+        private void BuyAutomation_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Automation automation = (Automation)button.DataContext;
+            _MainViewModel.BuyAutomation(automation);
         }
     }
 }

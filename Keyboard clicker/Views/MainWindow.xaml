@@ -41,15 +41,18 @@
             <Button Content="Automations" Name="AutomationsButton" FontSize="30" FontWeight="Bold" Click="AutomationsButton_Click"/>
         </StackPanel>
         <Grid Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,10,0">
-            <ListView Name="UpgradeList" ItemsSource="{Binding Upgrades}" Height="300" Width="300" Opacity="0">
+            <ListView Name="UpgradeList" ItemsSource="{Binding Upgrades}" Height="400" Width="300" Opacity="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="DimGray" BorderThickness="2" Padding="10">
-                            <StackPanel>
+                            <StackPanel Spacing="5">
                                 <Image/>
-                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding Name}" FontSize="20" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Description}"/>
                                 <TextBlock Text="{Binding BasePrice}"/>
                                 <TextBlock Text="{Binding IncomePerSecond}"/>
+                                <TextBlock Text="{Binding Quantity}"/>
+                                <Button Content="Buy" Click="BuyUpgrade_Click"/>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
@@ -64,6 +67,7 @@
                             <TextBlock Text="{Binding Price}"/>
                             <TextBlock Text="{Binding Quantity}"/>
                             <TextBlock Text="{Binding Description}"/>
+                            <Button Content="Buy" Click="BuyAutomation_Click"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

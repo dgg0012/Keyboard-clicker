@@ -1,0 +1,241 @@
+{
+  "Upgrades": [
+    {
+      "Id": "upgrade_01",
+      "Name": "Better Keycaps",
+      "Description": "Slightly improves your keyboard.",
+      "BasePrice": 10,
+      "PriceMultiplier": 1.15,
+      "IncomePerSecond": 1,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_02",
+      "Name": "Mechanical Switches",
+      "Description": "Mechanical switches make your keyboard more productive.",
+      "BasePrice": 25,
+      "PriceMultiplier": 1.15,
+      "IncomePerSecond": 2,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_03",
+      "Name": "Gaming Keyboard",
+      "Description": "A keyboard designed for maximum key production.",
+      "BasePrice": 75,
+      "PriceMultiplier": 1.16,
+      "IncomePerSecond": 5,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_04",
+      "Name": "RGB Lighting",
+      "Description": "The RGB makes the keyboard work harder...probably....",
+      "BasePrice": 150,
+      "PriceMultiplier": 1.16,
+      "IncomePerSecond": 8,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_05",
+      "Name": "Premium Keycaps",
+      "Description": "High-quality keycaps for serious key production.",
+      "BasePrice": 300,
+      "PriceMultiplier": 1.17,
+      "IncomePerSecond": 15,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_06",
+      "Name": "Lubed Switches",
+      "Description": "Smooth switches mean smoother key production.",
+      "BasePrice": 600,
+      "PriceMultiplier": 1.17,
+      "IncomePerSecond": 25,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_07",
+      "Name": "Custom Keyboard",
+      "Description": "A fully customized keyboard built for production.",
+      "BasePrice": 1200,
+      "PriceMultiplier": 1.18,
+      "IncomePerSecond": 40,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_08",
+      "Name": "Hot-Swap Board",
+      "Description": "Swap switches without slowing down production.",
+      "BasePrice": 2500,
+      "PriceMultiplier": 1.18,
+      "IncomePerSecond": 70,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_09",
+      "Name": "Professional Keyboard",
+      "Description": "Professional-grade hardware for professional key production.",
+      "BasePrice": 5000,
+      "PriceMultiplier": 1.19,
+      "IncomePerSecond": 120,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_10",
+      "Name": "Keyboard Farm",
+      "Description": "Why have one keyboard when you can have dozens?",
+      "BasePrice": 10000,
+      "PriceMultiplier": 1.20,
+      "IncomePerSecond": 200,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_11",
+      "Name": "Keyboard Factory",
+      "Description": "A factory dedicated entirely to producing keys.",
+      "BasePrice": 25000,
+      "PriceMultiplier": 1.20,
+      "IncomePerSecond": 400,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_12",
+      "Name": "Industrial Keyboard Plant",
+      "Description": "Industrial-scale keyboard production.",
+      "BasePrice": 60000,
+      "PriceMultiplier": 1.21,
+      "IncomePerSecond": 800,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_13",
+      "Name": "Quantum Keyboard",
+      "Description": "A keyboard that exists in several states of productivity at once.",
+      "BasePrice": 150000,
+      "PriceMultiplier": 1.22,
+      "IncomePerSecond": 1600,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_14",
+      "Name": "AI Keyboard",
+      "Description": "The keyboard has learned how to produce keys by itself.",
+      "BasePrice": 400000,
+      "PriceMultiplier": 1.22,
+      "IncomePerSecond": 3500,
+      "Quantity": 0
+    },
+    {
+      "Id": "upgrade_15",
+      "Name": "Supercomputer Keyboard",
+      "Description": "An absurdly powerful keyboard connected to an absurdly powerful computer.",
+      "BasePrice": 1000000,
+      "PriceMultiplier": 1.23,
+      "IncomePerSecond": 8000,
+      "Quantity": 0
+    }
+  ],
+  "Automations": [
+    {
+      "Id": "automation_01",
+      "Name": "Tiny Servo",
+      "Description": "A tiny motor presses the keyboard once every few seconds.",
+      "Price": 100,
+      "Quantity": 0,
+      "Interval": 5,
+      "Elapsed": 0,
+      "AutomationType": "click"
+    },
+    {
+      "Id": "automation_02",
+      "Name": "Auto Clicker",
+      "Description": "Automatically presses the keyboard once every second.",
+      "Price": 500,
+      "Quantity": 0,
+      "Interval": 1,
+      "Elapsed": 0,
+      "AutomationType": "click"
+    },
+    {
+      "Id": "automation_03",
+      "Name": "Rapid Clicker",
+      "Description": "Presses the keyboard twice every second.",
+      "Price": 1500,
+      "Quantity": 0,
+      "Interval": 0.5,
+      "Elapsed": 0,
+      "AutomationType": "click"
+    },
+    {
+      "Id": "automation_04",
+      "Name": "Mechanical Arm",
+      "Description": "A robotic arm repeatedly presses the keyboard.",
+      "Price": 5000,
+      "Quantity": 0,
+      "Interval": 0.25,
+      "Elapsed": 0,
+      "AutomationType": "click"
+    },
+    {
+      "Id": "automation_05",
+      "Name": "Typing Robot",
+      "Description": "A robot dedicated to pressing keys as quickly as possible.",
+      "Price": 15000,
+      "Quantity": 0,
+      "Interval": 0.1,
+      "Elapsed": 0,
+      "AutomationType": "click"
+    },
+    {
+      "Id": "automation_06",
+      "Name": "Keyboard Bot",
+      "Description": "An autonomous bot that never stops clicking.",
+      "Price": 50000,
+      "Quantity": 0,
+      "Interval": 0.05,
+      "Elapsed": 0,
+      "AutomationType": "click"
+    },
+    {
+      "Id": "automation_07",
+      "Name": "Clicking Machine",
+      "Description": "A large machine built exclusively for pressing keyboards.",
+      "Price": 150000,
+      "Quantity": 0,
+      "Interval": 0.02,
+      "Elapsed": 0,
+      "AutomationType": "click"
+    },
+    {
+      "Id": "automation_08",
+      "Name": "Automated Keyboard Factory",
+      "Description": "An entire factory of machines dedicated to clicking.",
+      "Price": 500000,
+      "Quantity": 0,
+      "Interval": 0.01,
+      "Elapsed": 0,
+      "AutomationType": "click"
+    },
+    {
+      "Id": "automation_09",
+      "Name": "AI Clicker",
+      "Description": "An AI system that has mastered the art of clicking.",
+      "Price": 2000000,
+      "Quantity": 0,
+      "Interval": 0.005,
+      "Elapsed": 0,
+      "AutomationType": "click"
+    },
+    {
+      "Id": "automation_10",
+      "Name": "Quantum Clicker",
+      "Description": "A machine that clicks the keyboard before you even think about it.",
+      "Price": 10000000,
+      "Quantity": 0,
+      "Interval": 0.001,
+      "Elapsed": 0,
+      "AutomationType": "click"
+    }
+  ]
+}

@@ -84,6 +84,10 @@ namespace Keyboard_clicker.ViewModels
         {
             _saveService.ManualSave(_gameState);
         }
+        public void AutoSave()
+        {
+            _saveService.AutoSave(_gameState);
+        }
 
         public void Update(double deltaTime)
         {

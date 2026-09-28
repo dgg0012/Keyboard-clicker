@@ -24,6 +24,7 @@ namespace Keyboard_clicker
     {
         private MainViewModel _MainViewModel;
         private DispatcherQueueTimer _gameTimer;
+        private DispatcherQueueTimer _autoSaveTimer;
 
         public MainWindow()
         {
@@ -64,6 +65,11 @@ namespace Keyboard_clicker
 
             grid.DataContext = _MainViewModel;
 
+            _autoSaveTimer = DispatcherQueue.GetForCurrentThread().CreateTimer();
+            _autoSaveTimer.Interval = TimeSpan.FromMinutes(1);
+            _autoSaveTimer.Tick += AutoSaveTimer_Tick;
+            _autoSaveTimer.Start();
+
             _gameTimer = DispatcherQueue.GetForCurrentThread().CreateTimer();
             _gameTimer.Interval = TimeSpan.FromMilliseconds(100);
             _gameTimer.Tick += GameTimer_Tick;
@@ -77,6 +83,10 @@ namespace Keyboard_clicker
         private void GameTimer_Tick(DispatcherQueueTimer sender, object args)
         {
             _MainViewModel.Update(0.1);
+        }
+        private void AutoSaveTimer_Tick(DispatcherQueueTimer sender, object args)
+        {
+            _MainViewModel.AutoSave();
         }
 
         private void UpgradesButton_Click(object sender, RoutedEventArgs e)

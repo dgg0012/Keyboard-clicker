@@ -55,7 +55,7 @@ namespace Keyboard_clicker.Services
 
         public void ExecuteAutomation(Automation automation)
         {
-            if (automation.AutomationType == "Click")
+            if (automation.AutomationType == "click")
             {
                 _gameService.Click();
             }

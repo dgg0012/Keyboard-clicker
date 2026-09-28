@@ -31,8 +31,14 @@
         </StackPanel>
         
         <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,-50,0,0">
-            <TextBlock Name="CurrencyText" Text="{Binding Currency}" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"/>
-            <TextBlock Name="IncomePerSecondText" Text="{Binding IncomePerSecond}" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Name="CurrencyText" Text="{Binding Currency}" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"/>
+                <TextBlock Text="keys" FontSize="30"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Name="IncomePerSecondText" Text="{Binding IncomePerSecond}" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock Text="Keys/s"/>
+            </StackPanel>
             <Button Name="Keyboard" Content="Click" Width="400" Height="200" HorizontalAlignment="Center" Click="Keyboard_Click"/>
         </StackPanel>
 
@@ -41,7 +47,7 @@
             <Button Content="Automations" Name="AutomationsButton" FontSize="30" FontWeight="Bold" Click="AutomationsButton_Click"/>
         </StackPanel>
         <Grid Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,10,0">
-            <ListView Name="UpgradeList" ItemsSource="{Binding Upgrades}" Height="400" Width="300" Opacity="0">
+            <ListView Name="UpgradeList" ItemsSource="{Binding Upgrades}" Height="400" Width="300">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="DimGray" BorderThickness="2" Padding="10">
@@ -49,7 +55,7 @@
                                 <Image/>
                                 <TextBlock Text="{Binding Name}" FontSize="20" FontWeight="Bold"/>
                                 <TextBlock Text="{Binding Description}"/>
-                                <TextBlock Text="{Binding BasePrice}"/>
+                                <TextBlock Text="{Binding CurrentPrice}"/>
                                 <TextBlock Text="{Binding IncomePerSecond}"/>
                                 <TextBlock Text="{Binding Quantity}"/>
                                 <Button Content="Buy" Click="BuyUpgrade_Click"/>
@@ -58,7 +64,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <ListView Name="AutomationsList" ItemsSource="{Binding Automations}" Height="400" Width="300" Opacity="0">
+            <ListView Name="AutomationsList" ItemsSource="{Binding AvailableAutomations}" Height="400" Width="300" Visibility="Collapsed">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -76,8 +82,15 @@
 
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,-80,0,0">
             <TextBlock Text="Logs" FontSize="20" FontWeight="Bold"/>
-            <ListView>
-                <TextBlock Text="{Binding LogMessage}"/>
+            <ListView Name="LogList" ItemsSource="{Binding Logs}" Height="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding TimeStamp}"/>
+                            <TextBlock Text="{Binding Message}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
     </Grid>

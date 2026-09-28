@@ -15,12 +15,15 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Microsoft.UI.Dispatching;
 
 namespace Keyboard_clicker
 {
     public sealed partial class MainWindow : Window
     {
         private MainViewModel _MainViewModel;
+        private DispatcherQueueTimer _gameTimer;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,40 +44,50 @@ namespace Keyboard_clicker
             AutomationService automationService = new AutomationService(gameState, gameService);
             LogService logService = new LogService();
 
+
             _MainViewModel = new MainViewModel(
                 gameState, gameService, saveService, upgradeService, automationService, logService);
 
             grid.DataContext = _MainViewModel;
+
+            _gameTimer = DispatcherQueue.GetForCurrentThread().CreateTimer();
+            _gameTimer.Interval = TimeSpan.FromMilliseconds(100);
+            _gameTimer.Tick += GameTimer_Tick;
+            _gameTimer.Start();
         }
 
         private void Keyboard_Click(object sender, RoutedEventArgs e)
         {
             _MainViewModel.Click();
-
-            CurrencyText.Text = $"{_MainViewModel.Currency} keys";
-            IncomePerSecondText.Text = $"{_MainViewModel.IncomePerSecond} keys/s";
+        }
+        private void GameTimer_Tick(DispatcherQueueTimer sender, object args)
+        {
+            _MainViewModel.Update(0.1);
         }
 
         private void UpgradesButton_Click(object sender, RoutedEventArgs e)
         {
-            UpgradeList.Opacity = 1;
-            AutomationsList.Opacity = 0;
+            UpgradeList.Visibility = Visibility.Visible;
+            AutomationsList.Visibility = Visibility.Collapsed;
         }
 
         private void AutomationsButton_Click(object sender, RoutedEventArgs e)
         {
-            UpgradeList.Opacity = 0;
-            AutomationsList.Opacity = 1;
+            UpgradeList.Visibility = Visibility.Collapsed;
+            AutomationsList.Visibility = Visibility.Visible;
         }
 
         private void BuyUpgrade_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
             Upgrade upgrade = (Upgrade)button.DataContext;
-            System.Diagnostics.Debug.WriteLine(
-        $"Clicked: {upgrade.Name}");
-
             _MainViewModel.BuyUpgrade(upgrade);
+
+            UpgradeList.ItemsSource = null;
+            UpgradeList.ItemsSource = _MainViewModel.Upgrades;
+
+            LogList.ItemsSource = null;
+            LogList.ItemsSource = _MainViewModel.Logs;
         }
 
         private void BuyAutomation_Click(object sender, RoutedEventArgs e)
@@ -82,6 +95,9 @@ namespace Keyboard_clicker
             Button button = (Button)sender;
             Automation automation = (Automation)button.DataContext;
             _MainViewModel.BuyAutomation(automation);
+
+            LogList.ItemsSource = null;
+            LogList.ItemsSource = _MainViewModel.Logs;
         }
     }
 }

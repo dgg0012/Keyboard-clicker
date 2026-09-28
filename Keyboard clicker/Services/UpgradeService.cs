@@ -36,6 +36,7 @@ namespace Keyboard_clicker.Services
             {
                 _gameState.Currency -= price;
                 upgrade.Quantity++;
+                _gameState.IncomePerSecond += upgrade.IncomePerSecond;
                 return true;
             }
         }

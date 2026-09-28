@@ -3,6 +3,7 @@ using Keyboard_clicker.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace Keyboard_clicker.ViewModels
@@ -20,6 +21,7 @@ namespace Keyboard_clicker.ViewModels
 
         public double Currency => _gameState.Currency;
         public List<Upgrade> Upgrades => _gameState.Upgrades;
+        public List<Automation> AvailableAutomations => _gameState.Automations.Where(a => a.Quantity == 0).ToList();
         public List<Automation> Automations => _gameState.Automations;
 
         public double IncomePerSecond => _gameState.IncomePerSecond;
@@ -49,6 +51,11 @@ namespace Keyboard_clicker.ViewModels
             OnPropertyChanged(nameof(Currency));
         }
 
+        public double GetUpgradePrice(Upgrade upgrade)
+        {
+            return _upgradeService.GetPrice(upgrade);
+        }
+
         public void BuyUpgrade(Upgrade upgrade)
         {
             if (_upgradeService.BuyUpgrade(upgrade))
@@ -66,7 +73,7 @@ namespace Keyboard_clicker.ViewModels
             if (_automationService.BuyAutomation(automation))
             {
                 _logService.Add($"Bought {automation.Name}");
-                OnPropertyChanged(nameof(Automations));
+                OnPropertyChanged(nameof(AvailableAutomations));
                 OnPropertyChanged(nameof(Currency));
                 OnPropertyChanged(nameof(IncomePerSecond));
                 OnPropertyChanged(nameof(Logs));

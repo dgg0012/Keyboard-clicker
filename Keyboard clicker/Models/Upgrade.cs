@@ -21,6 +21,14 @@ namespace Keyboard_clicker.Models
 
         public int Quantity { get; set; }
 
+        public double CurrentPrice
+        {
+            get
+            {
+                return BasePrice * Math.Pow(PriceMultiplier, Quantity);
+            }
+        }
+
 
     }
 }

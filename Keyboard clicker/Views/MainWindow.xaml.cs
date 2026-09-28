@@ -42,7 +42,31 @@ namespace Keyboard_clicker
 
             if (File.Exists(savePath))
             {
-                gameState = saveService.Load(savePath);
+                try
+                {
+                    gameState = saveService.Load(savePath);
+                }
+                catch
+                {
+                    gameState = new GameState()
+                    {
+                        Upgrades = gameData.Upgrades,
+                        Automations = gameData.Automations
+                    };
+
+                    DispatcherQueue.TryEnqueue(async () =>
+                    {
+                        ContentDialog dialog = new ContentDialog
+                        {
+                            Title = "Save file error",
+                            Content = "Your save file could not be loaded. A new game has been started.",
+                            CloseButtonText = "OK",
+                            XamlRoot = Content.XamlRoot
+                        };
+
+                        await dialog.ShowAsync();
+                    });
+                }
             }
             else
             {

@@ -62,21 +62,31 @@ namespace Keyboard_clicker.Services
             try
             {
                 string jsonString = File.ReadAllText(savePath);
-                SaveData? saveData = JsonSerializer.Deserialize<SaveData>(jsonString);
+
+                SaveData? saveData =
+                    JsonSerializer.Deserialize<SaveData>(jsonString);
+
+                if (saveData == null)
+                {
+                    throw new Exception("Save file is empty or invalid.");
+                }
+
                 GameState gameState = new GameState
                 {
                     Currency = saveData.Currency,
                     ClickValue = saveData.ClickValue,
                     Upgrades = saveData.Upgrades,
                     Automations = saveData.Automations,
-                    Timers = saveData.Timers,
+                    Timers = saveData.Timers
                 };
+
                 return gameState;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                return new GameState();
+                Debug.WriteLine($"Save file could not be loaded: {ex.Message}");
+
+                throw;
             }
         }
     }

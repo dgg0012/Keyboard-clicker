@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Text.Json;
+using Windows.Storage;
 
 namespace Keyboard_clicker.Services
 {
@@ -15,12 +16,15 @@ namespace Keyboard_clicker.Services
 
         public SaveService()
         {
-            _manualSavePath = Path.Combine(AppContext.BaseDirectory, "Data", "ManualSave.json");
-            _autoSavePath = Path.Combine(AppContext.BaseDirectory, "Data", "AutoSave.json");
+            _manualSavePath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "ManualSave.json");
+            _autoSavePath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "AutoSave.json");
         }
 
         public void ManualSave(GameState gameState)
         {
+            Debug.WriteLine("ManualSave called");
+            Debug.WriteLine($"Saving to: {_manualSavePath}");
+
             SaveData saveData = new SaveData
             {
                 TimeStamp = DateTime.Now,
@@ -30,8 +34,12 @@ namespace Keyboard_clicker.Services
                 Automations = gameState.Automations,
                 Timers = gameState.Timers,
             };
+
             string jsonString = JsonSerializer.Serialize(saveData);
+
             File.WriteAllText(_manualSavePath, jsonString);
+
+            Debug.WriteLine("Save finished");
         }
 
         public void AutoSave(GameState gameState)

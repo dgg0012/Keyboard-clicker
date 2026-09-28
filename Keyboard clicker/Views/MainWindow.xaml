@@ -15,7 +15,7 @@
 
     <Grid DataContext="{Binding}" x:Name="grid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
             <RowDefinition Height="150" />
             <RowDefinition Height="300" />
             <RowDefinition Height="100" />
@@ -28,9 +28,10 @@
 
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <TextBlock Text="Keyboard clicker" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Save" Click="SaveData_Click" HorizontalAlignment="Center"/>
         </StackPanel>
         
-        <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,-50,0,0">
+        <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,-100,0,0">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <TextBlock Name="CurrencyText" Text="{Binding Currency}" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"/>
                 <TextBlock Text="keys" FontSize="30"/>
@@ -42,11 +43,11 @@
             <Button Name="Keyboard" Content="Click" Width="400" Height="200" HorizontalAlignment="Center" Click="Keyboard_Click"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,10,0" Width="400" Spacing="30" Orientation="Horizontal">
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="0,-100,10,0" Width="400" Spacing="30" Orientation="Horizontal">
             <Button Content="Upgrades" Name="UpgradesButton" FontSize="30" FontWeight="Bold" Click="UpgradesButton_Click"/>
             <Button Content="Automations" Name="AutomationsButton" FontSize="30" FontWeight="Bold" Click="AutomationsButton_Click"/>
         </StackPanel>
-        <Grid Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,10,0">
+        <Grid Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="0,-70,10,0">
             <ListView Name="UpgradeList" ItemsSource="{Binding Upgrades}" Height="400" Width="300">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -80,7 +81,7 @@
             </ListView>
         </Grid>
 
-        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,-80,0,0">
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,-120,0,0">
             <TextBlock Text="Logs" FontSize="20" FontWeight="Bold"/>
             <ListView Name="LogList" ItemsSource="{Binding Logs}" Height="100">
                 <ListView.ItemTemplate>

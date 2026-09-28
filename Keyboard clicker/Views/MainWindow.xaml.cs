@@ -16,6 +16,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Microsoft.UI.Dispatching;
+using Windows.Storage;
 
 namespace Keyboard_clicker
 {
@@ -33,14 +34,27 @@ namespace Keyboard_clicker
             GameDataService gameDataService = new GameDataService();
             GameData gameData = gameDataService.Load();
 
-            GameState gameState = new GameState()
+            GameState gameState;
+            string savePath = Path.Combine(
+            ApplicationData.Current.LocalFolder.Path,
+            "ManualSave.json");
+
+            if (File.Exists(savePath))
             {
-                Upgrades = gameData.Upgrades,
-                Automations = gameData.Automations
-            };
+                gameState = saveService.Load(savePath);
+            }
+            else
+            {
+                gameState = new GameState()
+                {
+                    Upgrades = gameData.Upgrades,
+                    Automations = gameData.Automations
+                };
+            }
 
             GameService gameService = new GameService(gameState);
             UpgradeService upgradeService = new UpgradeService(gameState);
+            upgradeService.RecalculateIncomePerSecond();
             AutomationService automationService = new AutomationService(gameState, gameService);
             LogService logService = new LogService();
 
@@ -98,6 +112,11 @@ namespace Keyboard_clicker
 
             LogList.ItemsSource = null;
             LogList.ItemsSource = _MainViewModel.Logs;
+        }
+
+        private void SaveData_Click(object sender, RoutedEventArgs e)
+        {
+            _MainViewModel.Save();
         }
     }
 }

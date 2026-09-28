@@ -40,5 +40,15 @@ namespace Keyboard_clicker.Services
                 return true;
             }
         }
+        public void RecalculateIncomePerSecond()
+        {
+            _gameState.IncomePerSecond = 0;
+
+            foreach (var upgrade in _gameState.Upgrades)
+            {
+                _gameState.IncomePerSecond +=
+                    upgrade.IncomePerSecond * upgrade.Quantity;
+            }
+        }
     }
 }
